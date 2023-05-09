@@ -13,7 +13,7 @@ import Foundation
 /// ```
 ///import NodeZooService
 ///
-///let nodeZooService = NodeZooService(apiKey: "<API Key of >"
+///let nodeZooService = NodeZooService(apiKey: "<API Key of >")
 /// ```
 ///
 /// And then search the public package as follows:
