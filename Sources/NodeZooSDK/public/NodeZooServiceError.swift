@@ -19,4 +19,6 @@ public enum NodeZooServiceError: Error {
     case noData
     /// Non-success (200) response
     case serverError
+    /// Success by not OK response
+    case nonOkResponse
 }

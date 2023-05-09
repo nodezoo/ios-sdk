@@ -43,7 +43,11 @@ struct ClosureBasedAPIService: APIServicingClosure {
             
             do {
                 let searchResponse = try JSONDecoder().decode(SearchResponse.self, from: data)
-                completion(.success(searchResponse.data.packages))
+                if searchResponse.ok {
+                    completion(.success(searchResponse.data?.packages ?? []))
+                } else {
+                    completion(.failure(NodeZooServiceError.nonOkResponse))
+                }
             } catch {
                 completion(.failure(error))
             }

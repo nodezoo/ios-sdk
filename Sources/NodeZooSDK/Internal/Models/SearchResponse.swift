@@ -10,12 +10,24 @@ import Foundation
 // MARK: - SearchResponse
 internal struct SearchResponse: Codable {
     let ok: Bool
-    let data: DataClass
+    let why: String?
+    let details: Details?
+    let data: DataClass?
     let meta: Meta
 
     enum CodingKeys: String, CodingKey {
-        case ok, data
+        case ok, data, why, details
         case meta = "meta$"
+    }
+}
+
+internal struct Details: Codable {
+    let path: [String]
+    let whyExactly: String
+    
+    enum CodingKeys: String, CodingKey {
+        case path
+        case whyExactly = "why_exactly"
     }
 }
 

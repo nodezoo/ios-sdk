@@ -55,5 +55,15 @@ final class NetworkManagerTest: XCTestCase {
         }
     }
     
+    func testSearch_success_nonOkResponse() {
+        let mockService = MockAPIService(result: .failure(NodeZooServiceError.nonOkResponse))
+        let networkManager = NetworkManager(apiKey: "", apiService: mockService)
+        
+        networkManager.search(package: "searchString") { result in
+            if case .failure(let failure) = result {
+                XCTAssertEqual(failure as! NodeZooServiceError, NodeZooServiceError.nonOkResponse)
+            }
+        }
+    }
     
 }
