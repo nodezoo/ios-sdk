@@ -34,8 +34,8 @@ struct NetworkManager {
         
     }
     
-    func createRequest() -> URLRequest? {
-        guard let url = URL(string: "https://api.nodezoo.com/api/public") else {
+    func createRequest(urlString: String = "https://api.nodezoo.com/api/public") -> URLRequest? {
+        guard let url = URL(string: urlString) else {
             print("Invalid URL")
             return nil
         }

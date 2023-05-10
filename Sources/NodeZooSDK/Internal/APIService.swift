@@ -26,10 +26,12 @@ struct ClosureBasedAPIService: APIServicingClosure {
             }
             
             // --- Debugging purpose only ---
+            #if DEBUG
             print("Status code: \(httpResponse.statusCode)")
             if let data = data {
                 print("Data: \(String(describing: String(data: data, encoding: .utf8)))")
             }
+            #endif
                         
             guard httpResponse.statusCode == 200 else {
                 completion(.failure(NodeZooServiceError.serverError))
